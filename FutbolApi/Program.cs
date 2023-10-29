@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using FutbolApi.Context;
 using FutbolApi.Models;
+using System.Text.Json.Serialization;
+using FutbolApi.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,12 @@ builder.Services.AddSwaggerGen();
 
 //Agregar contexto de Base de datos
 builder.Services.AddDbContext<FutbolContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("CadenaSql")));
+
+builder.Services.AddScoped<IJugadorRepository, JugadorRepository>();
+builder.Services.AddControllers().AddJsonOptions(opt =>
+{
+    opt.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+});
 
 var app = builder.Build();
 

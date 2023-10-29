@@ -79,10 +79,10 @@ public partial class FutbolContext : DbContext
                 .HasMaxLength(255)
                 .IsUnicode(false);
 
-            entity.HasOne(d => d.Club).WithMany(p => p.Jugadors)
-                .HasForeignKey(d => d.ClubId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Jugador__Numero__5441852A");
+            //entity.HasOne(d => d.Club).WithMany(p => p.Jugadors)
+            //    .HasForeignKey(d => d.ClubId)
+            //    .OnDelete(DeleteBehavior.ClientSetNull)
+            //    .HasConstraintName("FK__Jugador__Numero__5441852A");
         });
 
         modelBuilder.Entity<Liga>(entity =>

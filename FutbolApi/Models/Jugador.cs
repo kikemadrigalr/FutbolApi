@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace FutbolApi.Models;
 
@@ -17,6 +18,7 @@ public partial class Jugador
 
     public int Numero { get; set; }
 
-    public virtual Club Club { get; set; } = null!;
+    //[JsonIgnore]
+    //public virtual Club Club { get; set; } = null!;
     //public int Club { get; set; }
 }
