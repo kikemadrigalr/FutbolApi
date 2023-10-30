@@ -13,10 +13,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//Agregar contexto de Base de datos
+//Agregar contexto de Base de datos y obtener los datos de la conexion
 builder.Services.AddDbContext<FutbolContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("CadenaSql")));
 
+//Inyeccion de la dependecnia del servicio Jugador para que sea accedido desde los controladores
 builder.Services.AddScoped<IJugadorRepository, JugadorRepository>();
+
 builder.Services.AddControllers().AddJsonOptions(opt =>
 {
     opt.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
